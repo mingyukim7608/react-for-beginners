@@ -10,6 +10,12 @@
     gap: 20px;
     color: inherit;
     box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25), 0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+    transition: all 0.5s ease-in-out;
+}
+
+.movie:hover {
+    background-color: #adaeb9;
+    color: white;
 }
 
 .movie__img {
@@ -25,7 +31,20 @@
 }
 
 .movie__title {
+    margin-bottom: 5px;
     font-size: 24px;
-    color: #2c2c2c;
-    text-decoration: none;
+    color: inherit;
+}
+
+.movie__genres {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movie__genres li, movie__year {
+    margin-right: 10px;
+    font-size: 14px;
 }

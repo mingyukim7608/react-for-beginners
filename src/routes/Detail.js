@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import styles from "./Detail.module.css";
 
 const Detail = () => {
   const [movieData, setMovieData] = useState({});
@@ -21,17 +22,33 @@ const Detail = () => {
   return (
     <div>
       {loading ? (
-        <h1> Loading ... </h1>
+        <div className={styles.loader}>
+          <h1> Loading ... </h1>
+        </div>
       ) : (
-        <>
-          <img src={movieData.large_cover_image} />
-          <h1> {movieData.title} </h1>
-          <h2> Genres: {movieData.genres.join()}</h2>
-          <p> {movieData.description_full} </p>
-          <img src={movieData.large_screenshot_image1} />
-          <img src={movieData.large_screenshot_image2} />
-          <img src={movieData.large_screenshot_image3} />
-        </>
+        <div>
+          <div className={styles.detail}>
+            <div className={styles.poster}>
+              <img src={movieData.large_cover_image} />
+            </div>
+            <div>
+              <h1 className={styles.title}> {movieData.title} </h1>
+              <h2 className={styles.genres}>
+                {" "}
+                {movieData.genres.join(" / ")}{" "}
+              </h2>
+              <p className={styles.description}>
+                {" "}
+                {movieData.description_full}{" "}
+              </p>
+            </div>
+          </div>
+          <div className={styles.screen_shots}>
+            <img src={movieData.large_screenshot_image1} />
+            <img src={movieData.large_screenshot_image2} />
+            <img src={movieData.large_screenshot_image3} />
+          </div>
+        </div>
       )}
     </div>
   );

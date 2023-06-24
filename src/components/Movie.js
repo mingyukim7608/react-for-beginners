@@ -4,21 +4,23 @@ import styles from "./Movie.module.css";
 
 const Movie = ({ movieId, coverImg, title, year, summary, genres }) => {
   return (
-    <div className={styles.movie}>
-      <img src={coverImg} alt={title} className={styles.movie__img} />
-      <div>
-        <h2 className={styles.movie__title}>
-          <Link to={`/movie/${movieId}`}>{title}</Link>
-        </h2>
-        <h3 className={styles.movie__year}>{year}</h3>
-        <p>{summary.slice(0, 235)}</p>
-        <ul className={styles.movie__genres}>
-          {genres.map((genre) => (
-            <li key={genre}>{genre}</li>
-          ))}
-        </ul>
+    <Link to={`/movie/${movieId}`}>
+      <div className={styles.movie}>
+        <img src={coverImg} alt={title} className={styles.movie__img} />
+        <div>
+          <h2 className={styles.movie__title}>{title}</h2>
+          <h3 className={styles.movie__year}>{year}</h3>
+          <p>
+            {summary.length <= 235 ? summary : summary.slice(0, 235) + "..."}
+          </p>
+          <ul className={styles.movie__genres}>
+            {genres.map((genre) => (
+              <li key={genre}>{genre}</li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
